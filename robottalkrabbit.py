@@ -51,7 +51,7 @@ logging.basicConfig()
 creds = pika.PlainCredentials('pmvpkimx','-DTOL85oNdJtiqWCqQZ3VYfNmZMdQ5-5')
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='turtle.rmq.cloudamqp.com',port=5672,credentials=creds,virtual_host='pmvpkimx'))
 channel = connection.channel()
-channel.queue_declare(queue='tilt')
+#channel.queue_declare(queue='tilt')
 print 'Waiting for messages...'
 
 def callback(ch,method,properties,body):
