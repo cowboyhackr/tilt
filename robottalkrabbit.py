@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import json
 from subprocess import call
 from time import sleep
 import sys
@@ -17,6 +17,11 @@ maxSpeedLeft = 50
 maxSpeedRight = 50
 degreesPerSecond = 360/3.4
 cmPerSecond = 100/4.5
+json_data=open('config.json')
+config = json.load(json_data)
+json_data.close()
+
+print(config["amqpconn"])
 
 #functions
 def call_command(servo, pulsewidth):
