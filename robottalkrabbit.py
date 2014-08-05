@@ -21,7 +21,7 @@ json_data=open('config.json')
 config = json.load(json_data)
 json_data.close()
 
-print(config["amqpconn"])
+print(config["amqp_pw"])
 
 #functions
 def call_command(servo, pulsewidth):
@@ -53,7 +53,7 @@ def turn(degrees, direction):
 
 #read from queue
 logging.basicConfig()
-creds = pika.PlainCredentials('pmvpkimx','-DTOL85oNdJtiqWCqQZ3VYfNmZMdQ5-5')
+creds = pika.PlainCredentials('pmvpkimx',config["amqp_pw"])
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='turtle.rmq.cloudamqp.com',port=5672,credentials=creds,virtual_host='pmvpkimx'))
 channel = connection.channel()
 #channel.queue_declare(queue='tilt')
